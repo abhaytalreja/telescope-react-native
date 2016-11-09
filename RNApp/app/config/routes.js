@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from '../routes/Home';
 import Details from '../routes/Details';
+import PostsDetails from '../routes/PostsDetails';
 import Profile from '../routes/Profile';
 import SignIn from '../routes/SignIn';
 
@@ -20,6 +21,17 @@ export const routes = {
     return {
       renderScene(navigator) {
         return <Details navigator={navigator} />;
+      },
+
+      getTitle() {
+        return 'Details';
+      },
+    };
+  },
+  getPostsDetailsRoute(item) {
+    return {
+      renderScene(navigator) {
+        return <PostsDetails navigator={navigator} item={item}/>;
       },
 
       getTitle() {

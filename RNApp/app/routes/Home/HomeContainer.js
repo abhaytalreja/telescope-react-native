@@ -4,7 +4,7 @@ import Routes from '../../config/routes';
 
 const HomeContainer = (props) => {
   return (
-    <Home
+    <Home navigator={props.navigator} 
       onDetailsPress={() => props.navigator.push(Routes.getDetailsRoute())}
     />
   );

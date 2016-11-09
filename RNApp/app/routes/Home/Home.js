@@ -5,6 +5,7 @@ import styles from './styles';
 import Posts from '../Posts';
 
 const Home = (props) => {
+  console.log(props);
   return (
     <View style={styles.container}>
       <Posts navigator={props.navigator} currentLimit={10}/>

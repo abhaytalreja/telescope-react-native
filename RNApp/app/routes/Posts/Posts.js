@@ -97,8 +97,6 @@ class Posts extends React.Component {
     // console.log(item.upvoters, this.props.user._id);
     const myIcon = item.upvoters.indexOf(this.props.user._id) == -1 ? (<Icon name="thumbs-up" size={30} color="#bbb" />) : (<Icon name="thumbs-up" size={30} color="#0275d8" />)
 
-    console.log(item._id, this.props.user._id);
-
     return (
       <TouchableHighlight onPress={() => {
           this.handleClick(rowID, item);

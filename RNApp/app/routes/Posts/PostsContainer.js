@@ -10,6 +10,8 @@ let currentLimit = 8;
 class PostsContainer extends React.Component {	
 	constructor(props) {
 	  super(props);
+
+	  console.log(props);
 	
 	  this.state = {currentLimit: currentLimit};
 	}
@@ -17,7 +19,7 @@ class PostsContainer extends React.Component {
 	render(){
 		return (
 	    <Posts navigator={this.props.navigator} user={this.props.user} updateCurrentLimit={() => this.updateCurrentLimit()}
-	      currentLimit={this.state.currentLimit} onDetailsPress={(item) => this.props.navigator.push(Routes.getDetailsRoute(item))}
+	      currentLimit={this.state.currentLimit} onDetailsPress={(item) => this.props.navigator.push(Routes.getPostsDetailsRoute(item))}
 	    />
 	  );
 	}
