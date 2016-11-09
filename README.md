@@ -14,6 +14,18 @@ As it currently stands this project is only focused on configuring the React Nat
 - Clone Repo: `git clone https://github.com/spencercarli/react-native-meteor-boilerplate.git`
 - From the `RNApp` directory run `npm install`
 
+### 2. NPM dependency
+This package depends on the awesome `react-native-infinite-scroll-view` ([repo](https://github.com/exponentjs/react-native-infinite-scroll-view)) and `react-native-vector-icons` ([repo](https://github.com/oblador/react-native-vector-icons)) you need to install the dependency: 
+```
+npm install react-native-infinite-scroll-view
+npm install react-native-vector-icons
+```
+
+Make sure to link the fonts
+```
+rnpm link react-native-vector-icons
+```
+
 ## Running on iOS Simulator
 
 _Note_: You must be on a Mac for this.
@@ -37,5 +49,5 @@ _Note_: You must be on a Mac for this.
 
 For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device-ios.html#content).
 =======
-# react-native-telescope
+# telescope-react-native
 This is a react native version for Telescope. This project will out of the box support as a reader to Telescope. We will try to make this project as modular as possible. Any PR's welcome.
