@@ -1,4 +1,4 @@
-![Alt text](/demo_full.png "demo_full")
+![Alt text](/demo_new.png "demo_new")
 
 # telescope-react-native
 This is a react native version for Telescope. This project will out of the box support as a reader to Telescope. We will try to make this project as modular as possible.
