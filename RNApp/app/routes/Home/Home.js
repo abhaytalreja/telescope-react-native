@@ -2,13 +2,12 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import Button from '../../components/Button';
 import styles from './styles';
-import Posts from '../Posts';
+import PostsHome from '../Posts/PostsHome';
 
 const Home = (props) => {
-  console.log(props);
   return (
     <View style={styles.container}>
-      <Posts navigator={props.navigator} currentLimit={10}/>
+      <PostsHome navigator={props.navigator} selector={{}}/>
     </View>
   );
 };

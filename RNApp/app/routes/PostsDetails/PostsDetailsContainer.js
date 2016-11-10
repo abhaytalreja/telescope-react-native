@@ -17,14 +17,14 @@ PostsDetailsContainer.propTypes = {
 
 export default createContainer((params) => {
   // console.log(params);
-  let selector = {_id: params.item._id};
-  let options = {};
-  let terms = {selector, options};
-  const handle = Meteor.subscribe('posts.single', terms);
-  // const itemFetched = Meteor.collection('posts').find({_id: params.item._id});
+  let selector = {_id: params.item._id, slug: params.item._slug};
+  // let options = {};
+  // let terms = {selector};
+  const handle = Meteor.subscribe('posts.single', selector);
+  const itemFetched = Meteor.collection('posts').findOne({_id: params.item._id});
   return {
     detailsReady: true,
     user: Meteor.user(),
-    // item: itemFetched[0],
+    item: itemFetched,
   };
 }, PostsDetailsContainer);

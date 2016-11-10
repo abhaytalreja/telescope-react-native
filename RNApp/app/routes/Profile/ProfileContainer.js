@@ -24,6 +24,8 @@ ProfileContainer.propTypes = {
 };
 
 export default createContainer(() => {
+  const handle = Meteor.subscribe('users.current');
+  console.log(Meteor.user());
   return {
     user: Meteor.user(),
   };

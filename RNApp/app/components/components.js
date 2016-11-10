@@ -20,5 +20,6 @@ Telescope.getComponent = (name) => {
 Telescope.registerComponent("PostsCategories",      require('../routes/Posts/PostsCategories.js'));
 Telescope.registerComponent("Posts",      require('../routes/Posts/Posts.js'));
 Telescope.registerComponent("PostsContainer",      require('../routes/Posts/PostsContainer.js'));
+Telescope.registerComponent("PostsUserInfo",      require('../routes/Posts/PostsUserInfo.js'));
 
 export default Telescope;

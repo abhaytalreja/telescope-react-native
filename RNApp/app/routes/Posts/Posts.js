@@ -6,6 +6,8 @@ import Meteor, {MeteorListView, createContainer} from 'react-native-meteor';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Telescope from '../../components/components.js';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
+import Routes from '../../config/routes';
+import { colors } from '../../config/styles';
 
 let limit = 8;
 
@@ -21,20 +23,14 @@ class Posts extends React.Component {
     this.state = {grid: false, limit: this.props.currentLimit, canLoadMore: true};
   }
 
-  getOptions(){
-    return {
-      sort: {postedAt: -1},
-      limit: this.props.currentLimit,
-    }
-  }
-
   handleLoadMoreAsync(){
-    console.log('handleLoadMoreAsync called', this.state.canLoadMore);
     if(this.state.canLoadMore){
-      this.props.updateCurrentLimit;
-      console.log(this.props.currentLimit)
+      this.props.updateCurrentLimit();
+      // console.log(this.props.currentLimit)
+      let newLimit = this.props.currentLimit + 8;
+      limit = newLimit;
       this.setState({
-        limit: this.props.currentLimit,
+        limit: newLimit,
         canLoadMore: false
       });
 
@@ -50,7 +46,7 @@ class Posts extends React.Component {
   render (){
     // let posts = this.props.posts;
     // let postsReady = this.props.postsReady;
-    let selector = {};
+    let selector = this.props.selector ? this.props.selector : {};
     let options = {sort: {postedAt: -1}, limit: this.props.currentLimit};
     return (
       <View style={styles.container}>
@@ -68,14 +64,9 @@ class Posts extends React.Component {
     )
   }
 
-  fetchMoreData(){
-    console.log('fetchMoreData called');
-    this.setState({limit: this.state.limit+8});
-  }
-
   handleClick(e, item){
-    console.log(item,item._id);
-    this.props.onDetailsPress(item);
+    // this.props.onDetailsPress(item);
+    this.props.navigator.push(Routes.getPostsDetailsRoute(item));
   }
 
   renderHeader(){
@@ -92,10 +83,10 @@ class Posts extends React.Component {
   }
 
   renderItem(item, sectionID, rowID) {
-    let imageUrl = item.thumbnailUrl.indexOf('https') == -1 ? item.thumbnailUrl.replace('http', 'https') : item.thumbnailUrl;
+    let imageUrl = item.thumbnailUrl ? (item.thumbnailUrl.indexOf('https') == -1 ? item.thumbnailUrl.replace('http', 'https') : item.thumbnailUrl) : "https://placeholdit.imgix.net/~text?txtsize=10&txt=Coming%20soon&w=64&h=64&txttrack=0";
 
     // console.log(item.upvoters, this.props.user._id);
-    const myIcon = item.upvoters.indexOf(this.props.user._id) == -1 ? (<Icon name="thumbs-up" size={30} color="#bbb" />) : (<Icon name="thumbs-up" size={30} color="#0275d8" />)
+    const myIcon = item.upvoters.indexOf(this.props.user._id) == -1 ? (<Icon name="thumbs-up" size={30} color="#bbb" />) : (<Icon name="thumbs-up" size={30} color={colors.themeColor} />)
 
     return (
       <TouchableHighlight onPress={() => {
@@ -106,6 +97,7 @@ class Posts extends React.Component {
             <View style={styles.titleRow}>
               <Text style={styles.title}>{item.title}</Text>
               {this.renderCategories(item, styles.postCategoryStyle)}
+              <Telescope.components.PostsUserInfo post={item} />
             </View>
             <TouchableOpacity style={styles.likeButton} onPress={()=> Meteor.call('posts.checkAndUpvote', item._id, this.props.user._id)} >{myIcon}</TouchableOpacity>
           </View>
@@ -120,6 +112,7 @@ Posts.propTypes = {
   navigator: React.PropTypes.object,
   currentLimit: React.PropTypes.number,
   updateCurrentLimit: React.PropTypes.func,
+  selector: React.PropTypes.object,
 };
 
 export default createContainer((params) => {
@@ -128,7 +121,7 @@ export default createContainer((params) => {
   let categories = Meteor.collection('categories').find({});
 
 
-  let selector = {};
+  let selector = params.selector ? params.selector : {};
   let options = {limit: params.currentLimit, sort: {postedAt: -1}};
   let terms = {selector, options};
   let handle = Meteor.subscribe('posts.list', terms);

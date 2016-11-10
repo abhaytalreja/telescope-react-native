@@ -16,11 +16,28 @@ export default StyleSheet.create({
   },
   row: {
     padding: 10,
+    paddingRight:30,
     flex: 1,
     flexDirection: 'row',
     backgroundColor: '#F6F6F6',
-    marginRight: 10,
     justifyContent: 'space-around',
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: '#fafafa',
+  },
+  detailRow: {
+    flexDirection: 'row'
+  },
+  timeAgo: {
+    color: '#888',
+    fontSize: 12,
+    paddingTop: 5,
+    paddingLeft: 10
+  },
+  userInfo: {
+    color: '#888',
+    fontSize: 14,
+    paddingTop: 3,
   },
   postsCategories: {
     color: '#f2784b',

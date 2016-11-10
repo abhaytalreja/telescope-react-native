@@ -5,6 +5,7 @@ import Loading from '../../components/Loading';
 import styles from './styles';
 import Telescope from '../../components/components.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { colors } from '../../config/styles';
 
 // const PostsDetails = ({ detailsReady, this.props.item }) => {
 class PostsDetails extends React.Component {
@@ -20,7 +21,7 @@ class PostsDetails extends React.Component {
 
     console.log(this.props.item.body);
 
-    const myIcon = this.props.item.upvoters.indexOf(this.props.user._id) == -1 ? (<Icon name="thumbs-up" size={30} color="#bbb" />) : (<Icon name="thumbs-up" size={30} color="#0275d8" />)
+    const myIcon = this.props.item.upvoters.indexOf(this.props.user._id) == -1 ? (<Icon name="thumbs-up" size={30} color="#bbb" />) : (<Icon name="thumbs-up" size={30} color={colors.themeColor} />)
 
     return (
       <View style={styles.container}>
@@ -31,10 +32,10 @@ class PostsDetails extends React.Component {
             <View style={styles.titleRowDetails}>
               <Text style={styles.title}>{this.props.item.title}</Text>
               {this.renderCategories(this.props.item, styles.postCategoryStyle)}
+              <Telescope.components.PostsUserInfo post={this.props.item} />
             </View>
           </View>
           <View style={styles.bodyRow}>
-            <Text style={styles.body}>Hello</Text>
             <Text style={styles.body}>{this.props.item.body}</Text>
           </View>
         </View>

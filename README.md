@@ -15,10 +15,11 @@ As it currently stands this project is only focused on configuring the React Nat
 - From the `RNApp` directory run `npm install`
 
 ### 2. NPM dependency
-This package depends on the awesome `react-native-infinite-scroll-view` ([repo](https://github.com/exponentjs/react-native-infinite-scroll-view)) and `react-native-vector-icons` ([repo](https://github.com/oblador/react-native-vector-icons)) you need to install the dependency: 
+This package depends on the awesome `react-native-infinite-scroll-view` ([repo](https://github.com/exponentjs/react-native-infinite-scroll-view)), `react-native-timeago` ([repo](https://github.com/TylerLH/react-native-timeago))  and `react-native-vector-icons` ([repo](https://github.com/oblador/react-native-vector-icons)) you need to install the dependency: 
 ```
 npm install react-native-infinite-scroll-view
 npm install react-native-vector-icons
+npm install react-native-timeago
 ```
 
 Make sure to link the fonts

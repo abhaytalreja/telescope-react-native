@@ -15,4 +15,9 @@ export default StyleSheet.create({
     marginTop: -50,
     alignItems: 'center',
   },
+  headerText: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+  }
 });

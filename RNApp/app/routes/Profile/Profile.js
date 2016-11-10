@@ -5,10 +5,17 @@ import Avatar from '../../components/Avatar';
 import images from '../../config/images';
 import { capitalize } from '../../lib/string';
 import styles from './styles';
+import PostsHome from '../Posts/PostsHome';
+var _ = require('underscore');
 
 const Profile = (props) => {
   const { user, signOut } = props;
   let email;
+
+  var postsIds = _.pluck(user.telescope.upvotedPosts, "itemId");
+  const selector = {_id: {$in: postsIds}, userId: {$ne: user._id}};
+  
+  console.log(selector);
 
   if (user) {
     email = user.emails[0].address;
@@ -22,6 +29,8 @@ const Profile = (props) => {
         <Text>{capitalize(email)}</Text>
         <Button text="Sign Out" onPress={signOut} />
       </View>
+      <Text style={styles.headerText}>Posts you Liked!</Text>
+      <PostsHome navigator={props.navigator} selector={selector}/>
     </View>
   );
 };

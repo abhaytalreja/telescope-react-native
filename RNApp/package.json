@@ -15,6 +15,7 @@
     "react-native-keyboard-spacer": "^0.3.0",
     "react-native-meteor": "^1.0.0-rc14",
     "react-native-tab-navigator": "^0.3.3",
+    "react-native-timeago": "^0.3.0",
     "react-native-vector-icons": "^3.0.0"
   },
   "devDependencies": {

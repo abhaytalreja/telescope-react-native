@@ -3,7 +3,7 @@ import { colors } from '../../config/styles';
 
 const window = Dimensions.get('window');
 const MARGIN_HORIZONTAL = 10;
-const cardSize = (window.width - (MARGIN_HORIZONTAL * 4)) / 2;
+const cardSize = (window.width - (MARGIN_HORIZONTAL * 2)) / 2;
 
 export default StyleSheet.create({
   container: {
@@ -32,21 +32,32 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: '#fff',
+  },
+  timeAgo: {
+    color: '#888',
+    fontSize: 12,
   },
   imageFull: {
     flexDirection: 'row',
-    width: cardSize,
     height: cardSize,
+    width: cardSize,
     marginBottom: 20,
     marginTop: 20,
+    backgroundColor: '#fff',
   },
   titleRow: {
+    padding: 5,
     paddingLeft: 20,
     paddingRight: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderTopWidth: 5,
+    borderBottomWidth: 5,
+    borderColor: '#fafafa',
   },
   titleRowDetails: {
     paddingLeft: 20,
@@ -58,15 +69,14 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   bodyRow: {
-    paddingLeft: 10,
-    paddingRight: 10,
+    padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    margin: 10,
   },
   body: {
-    fontSize: 20,
-    paddingRight: 10,
-    fontWeight: 'bold',
+    fontSize: 14,
   }
 });
