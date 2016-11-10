@@ -45,9 +45,6 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6"
   },
-  "scripts": {
-    "start-meteor": "MONGO_URL=mongodb://prod:sachin_1248@aws-us-east-1-portal.14.dblayer.com:10214,aws-us-east-1-portal.13.dblayer.com:10159/class-bargain meteor run"
-  },
   "postcss": {
     "plugins": {
       "autoprefixer": {
